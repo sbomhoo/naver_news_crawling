@@ -4,9 +4,9 @@
 ------
 < 사용 라이브러리 >  
 - BeautifulSoup
+- requests
 - pandas
 - datetime (현 시간을 이름으로 저장하기 위함)
-- requests
 - re  (정규표현식)
 
 
