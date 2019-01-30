@@ -98,7 +98,7 @@ def crawler(maxpage,query,sort,s_date,e_date):
         
         
         #모든 리스트 딕셔너리형태로 저장
-        result= {"title":title_text , "link":link_text , "source" : source_text ,"date" : date_text ,"contents": contents_text}  
+        result= {"date" : date_text , "title":title_text ,  "source" : source_text ,"contents": contents_text ,"link":link_text }  
         print(page)
         
         df = pd.DataFrame(result)  #df로 변환
@@ -118,7 +118,7 @@ def main():
     query = input("검색어 입력: ")  
     sort = input("뉴스 검색 방식 입력(관련도순=0  최신순=1  오래된순=2): ")    #관련도순=0  최신순=1  오래된순=2
     s_date = input("시작날짜 입력(2019.01.04):")  #2019.01.04
-    e_date = input("끝날짜 입력(2019.01.04):")   #2019.01.05
+    e_date = input("끝날짜 입력(2019.01.05):")   #2019.01.05
     
     crawler(maxpage,query,sort,s_date,e_date) 
     
