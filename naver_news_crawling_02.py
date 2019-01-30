@@ -98,7 +98,7 @@ def crawler(maxpage,query,sort,s_date,e_date):
         
         
         #모든 리스트 딕셔너리형태로 저장
-        result= {"title":title_text , "link":link_text , "source" : source_text ,"date" : date_text ,"contents": contents_text }  
+        result= {"title":title_text , "link":link_text , "source" : source_text ,"date" : date_text ,"contents": contents_text}  
         print(page)
         
         df = pd.DataFrame(result)  #df로 변환
