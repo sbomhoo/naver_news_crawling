@@ -61,8 +61,9 @@ def crawler(maxpage,query,sort,s_date,e_date):
     s_from = s_date.replace(".","")
     e_to = e_date.replace(".","")
     page = 1  
-  
-    while page <= int(maxpage):
+    maxpage_t =(int(maxpage)-1)*10+1   # 11= 2페이지 21=3페이지 31=4페이지  ...81=9페이지 , 91=10페이지, 101=11페이지
+    
+    while page <= maxpage_t:
         url = "https://search.naver.com/search.naver?where=news&query=" + query + "&sort="+sort+"&ds=" + s_date + "&de=" + e_date + "&nso=so%3Ar%2Cp%3Afrom" + s_from + "to" + e_to + "%2Ca%3A&start=" + str(page)
         
         response = requests.get(url)
@@ -111,15 +112,15 @@ def crawler(maxpage,query,sort,s_date,e_date):
     
 
 def main():
-    info_main = input("="*50+"\n"+"입력 방식은 main()함수의 주석 참고 해주세요."+"\n"+" 시작하시려면 Enter를 눌러주세요."+"\n"+"="*50)
+    info_main = input("="*50+"\n"+"입력 형식에 맞게 입력해주세요."+"\n"+" 시작하시려면 Enter를 눌러주세요."+"\n"+"="*50)
     
-    maxpage = input("페이지수 입력하시오: ")  #1페이지=1  2페이지=11  3페이지=21  4페이지=31 ....10페이지=91
+    maxpage = input("최대 크롤링할 페이지 수 입력하시오: ")  
     query = input("검색어 입력: ")  
-    sort = input("뉴스 검색 방식 입력: ")    #관련도순=0  최신순=1  오래된순=2
-    s_date = input("시작날짜 입력:")  #2019.01.04
-    e_date = input("끝날짜 입력:")   #2019.01.05
+    sort = input("뉴스 검색 방식 입력(관련도순=0  최신순=1  오래된순=2): ")    #관련도순=0  최신순=1  오래된순=2
+    s_date = input("시작날짜 입력(2019.01.04):")  #2019.01.04
+    e_date = input("끝날짜 입력(2019.01.04):")   #2019.01.05
     
-    crawler(maxpage,query,sort,s_date,e_date) #검색된 네이버뉴스의 기사내용을 크롤링합니다. 페이지의 숫자를 넣으시오.
+    crawler(maxpage,query,sort,s_date,e_date) 
     
 main()
 
