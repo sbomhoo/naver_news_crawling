@@ -1,5 +1,5 @@
 # naver_news_crawling
-네이버 뉴스 리스트 크롤링 프로그램 (naver news crawling)
+Python을 이용한 네이버 뉴스 리스트 크롤링 프로그램 (naver news crawling)
 
 ------
  사용 라이브러리  
