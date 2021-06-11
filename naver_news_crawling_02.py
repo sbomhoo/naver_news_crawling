@@ -73,30 +73,29 @@ def crawler(maxpage,query,sort,s_date,e_date):
         soup = BeautifulSoup(html, 'html.parser')
  
         #<a>태그에서 제목과 링크주소 추출
-        atags = soup.select('._sp_each_title')
+        atags = soup.select('.news_tit')
         for atag in atags:
             title_text.append(atag.text)     #제목
             link_text.append(atag['href'])   #링크주소
             
         #신문사 추출
-        source_lists = soup.select('._sp_each_source')
+        source_lists = soup.select('.info_group > .press')
         for source_list in source_lists:
             source_text.append(source_list.text)    #신문사
         
         #날짜 추출 
-        date_lists = soup.select('.txt_inline')
+        date_lists = soup.select('.info_group > span.info')
         for date_list in date_lists:
-            test=date_list.text   
-            date_cleansing(test)  #날짜 정제 함수사용 
+            # 1면 3단 같은 위치 제거
+            if date_list.text.find("면") == -1:
+                date_text.append(date_list.text)
         
         #본문요약본
-        contents_lists = soup.select('ul.type01 dl')
+        contents_lists = soup.select('.news_dsc')
         for contents_list in contents_lists:
-            #print('==='*40)
-            #print(contents_list)
             contents_cleansing(contents_list) #본문요약 정제화
         
-        
+
         #모든 리스트 딕셔너리형태로 저장
         result= {"date" : date_text , "title":title_text ,  "source" : source_text ,"contents": contents_text ,"link":link_text }  
         print(page)
